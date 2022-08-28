@@ -17,7 +17,7 @@ app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
 const sess = {
-  secret: "Super secret secret",
+  secret: process.env.DB_SECRET,
   cookie: {},
   resave: false,
   saveUninitialized: true,
@@ -28,7 +28,7 @@ const sess = {
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, "public")));
+// app.use(express.static(path.join(__dirname, "public")));
 app.use(session(sess));
 
 // turn on routes
