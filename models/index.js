@@ -34,11 +34,3 @@ Blog.belongsTo(User, {
 });
 
 module.exports = { User, Comment, Blog };
-//user can have many blog posts+
-//user can have many comments+
-
-//comment belongs to blog+
-//blog can have many comments+
-//comment belongs to user+
-
-//blog belongs to user+
