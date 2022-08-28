@@ -12,7 +12,7 @@ router.get("/", (req, res) => {
     });
 });
 
-//front-end login.js should fetch on this route..
+//front-end login.js when signing up should fetch on this route..
 router.post("/", (req, res) => {
   User.create({
     username: req.body.username,
@@ -56,6 +56,7 @@ router.post("/login", (req, res) => {
 
 //logout button on front end fetches with POST method to logout(destroy session)
 router.post("/logout", (req, res) => {
+  console.log(req.session);
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();

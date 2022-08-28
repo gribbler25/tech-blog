@@ -4,15 +4,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Just Tech News</title>
+  <title>Tech Blog</title>
   <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 
 <body>
+  <header>
+    <nav>
+      {{#if loggedIn}}
+      <a href="/">Home</a>
+|
+      <a href="/dashboard">Dashboard</a>
+      |
+      <button id="logout" class="btn no-style">Logout</button>
+      {{/if}}
+     
+      |
+      <a href="/login">Login</a>
+   
+    </nav>
 
+    <div class="blog-head">
+     <h1 >
+      Tech Blog
+    </h1>
+    </div>
+  </header>
 
+  <main>
+      {{{ body }}}
+    </main>
 
-
+{{#if loggedIn}}
+<script src="/javascript/logout.js"></script>
+{{/if}}
 
 </body>
 
