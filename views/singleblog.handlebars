@@ -12,15 +12,18 @@
         {{created_at}}
         |
       </div>
+
 {{#if loggedIn}}
+<button class="delete-btn">Delete this blog</button>
+
 <form class="comment-form">
   <div>
     <label for="comment-body">New Comment:</label>
-    <textarea>name="comment-body"></textarea>
+    <textarea name="comment-body" class="comment-buddy"></textarea>
   </div>
-  <div>
+  
     <button type="submit">add comment</button>
-  </div>
+  
 </form>
 {{/if}}
 
@@ -34,3 +37,4 @@
   </li>
 </ol>
 <script src="/javascript/comment.js"></script>
+<script src="/javascript/delete-blog.js"></script>

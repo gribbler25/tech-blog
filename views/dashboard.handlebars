@@ -1,2 +1,20 @@
 {{!-- dashboard for same header and all blogs assoc with the logged-in user's id(session.id)incuding comments.
 button to add a blog at bottom. --}}
+
+
+{{#if blogs.length}}
+<section>
+  <h2>Your Blogs</h2>
+  <ol>
+    {{#each blogs as |blog|}}
+    <li>
+      <a href="/blog/{{id}}">{{blog.title}}</a>
+      {{blog.blog_text}}
+      {{>comments blog.comments}}
+    </li>
+    {{/each}}
+  </ol>
+</section>
+{{/if}}
+
+<button class="addBlog-btn">&#43; Add Blog</button>

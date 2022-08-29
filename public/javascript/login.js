@@ -13,7 +13,7 @@ async function loginFormHandler(event) {
       }),
       headers: { "Content-Type": "application/json" },
     });
-
+    console.log(response, response.ok);
     if (response.ok) {
       document.location.replace("/");
     } else {

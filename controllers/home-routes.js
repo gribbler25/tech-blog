@@ -49,7 +49,7 @@ router.get("/blog/:id", (req, res) => {
     include: [
       {
         model: Comment,
-        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+        attributes: ["id", "comment_text", "blog_id", "user_id", "created_at"],
         include: {
           model: User,
           attributes: ["username"],
@@ -66,12 +66,40 @@ router.get("/blog/:id", (req, res) => {
         res.status(404).json({ message: "No post found with this id" });
         return;
       }
-
       // serialize the data
       const blog = dbPostData.get({ plain: true });
-
+      console.log(blog);
       // pass data to template,
       res.render("singleblog", { blog, loggedIn: req.session.loggedIn });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+//route to run when dashboard link pressed while logged in..display only the logged in user's blogs
+router.get("/dashboard", (req, res) => {
+  Blog.findAll({
+    where: {
+      user_id: req.session.user_id,
+    },
+    include: [
+      {
+        model: Comment,
+        attributes: ["id", "comment_text", "blog_id", "user_id", "created_at"],
+        include: {
+          model: User,
+          attributes: ["username"],
+        },
+      },
+    ],
+  })
+    .then((dbPostData) => {
+      console.log(dbPostData);
+      // 'serialize'
+      constblogss = dbPostData.map((blog) => blog.get({ plain: true }));
+      res.render("dashboard", { posts, loggedIn: true });
     })
     .catch((err) => {
       console.log(err);
