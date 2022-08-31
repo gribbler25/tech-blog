@@ -5,16 +5,31 @@ button to add a blog at bottom. --}}
 {{#if blogs.length}}
 <section>
   <h2>Your Blogs</h2>
-  <ol>
-    {{#each blogs as |blog|}}
-    <li>
-      <a href="/blog/{{id}}">{{blog.title}}</a>
-      {{blog.blog_text}}
-      {{>comments blog.comments}}
-    </li>
-    {{/each}}
+  <ol class="blog-list">
+     {{#each blogs as |blog|}}
+  <li>
+    {{!-- {{< blog-info blogs}} --}}
+    <article class="blog">
+      <div class="title-blog">
+        <h2>{{title}}</h2>
+        <p>{{blog_text}}</p>
+      </div>
+
+      <div class="meta">
+        by {{user.username}} on
+        {{created_at}}
+        |
+        {{!-- <a href="/blog/{{id}}">comment here</a> --}}
+      </div>
+  {{>comments blog.comments}}
+    </article>
+  </li>
+  {{/each}}
   </ol>
+
 </section>
 {{/if}}
 
 <button class="addBlog-btn">&#43; Add Blog</button>
+
+<script src="/javascript/addBlog.js"></script>

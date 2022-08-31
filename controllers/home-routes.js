@@ -39,7 +39,7 @@ router.get("/signup", (req, res) => {
   res.render("signup");
 });
 
-//render homepage with one blog incuding comments and option to comment...called on when 'comment here' link is clicked
+//render page with one blog incuding comments and option to comment...called on when 'comment here' link is clicked
 router.get("/blog/:id", (req, res) => {
   Blog.findOne({
     where: {
@@ -84,6 +84,7 @@ router.get("/dashboard", (req, res) => {
     where: {
       user_id: req.session.user_id,
     },
+    attributes: ["id", "title", "blog_text", "created_at"],
     include: [
       {
         model: Comment,
@@ -98,8 +99,9 @@ router.get("/dashboard", (req, res) => {
     .then((dbPostData) => {
       console.log(dbPostData);
       // 'serialize'
-      constblogss = dbPostData.map((blog) => blog.get({ plain: true }));
-      res.render("dashboard", { posts, loggedIn: true });
+      const blogs = dbPostData.map((blog) => blog.get({ plain: true }));
+      console.log(blogs);
+      res.render("dashboard", { blogs, loggedIn: true });
     })
     .catch((err) => {
       console.log(err);

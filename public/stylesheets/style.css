@@ -2,8 +2,8 @@
     box-sizing: border-box;
   }
   .blog{
-    padding: 10px;
-/* border: 5px solid black; */
+    padding: 20px;
+border: 5px solid black;
 width:fit-content;
   }
   a {
@@ -16,10 +16,15 @@ width:fit-content;
     color:purple;
   }
   .title-blog{
-    font-size: medium;
+    font-weight: bolder;
     font-family: 'Times New Roman', Times, serif;
     background-color: aqua;
     color:black;
+  }
+  .text{
+    background-color: aqua;
+    font-size: medium;
+    font-style: italic;
   }
   .blog-head{
     padding: 15px;
@@ -40,8 +45,10 @@ width:fit-content;
     background-color: aqua;
   }
   .addBlog-btn{
-    width: 20px;
-    height: 10px;
+    font-size: medium;
+    font-weight: bold;
+    width: 20%;
+    height: 20%;
     color: black;
     background-color: aqua;
   }
