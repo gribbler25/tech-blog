@@ -8,7 +8,7 @@ width:fit-content;
   }
   a {
     text-decoration: none;
-    color: #225ca3;
+    color:  #00D5D5;
     font-weight: bold;
     transition: color .1s;
   }
@@ -34,7 +34,7 @@ width:fit-content;
   .blog-list{
     list-style: none;
   }
-  .login-form, .signup-form{
+  .login-form, .signup-form, .add-blog-form{
     margin: 10px;
     border: 5px solid black;
     box-shadow: 3px, 5px aqua;

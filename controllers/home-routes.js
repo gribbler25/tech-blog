@@ -108,4 +108,7 @@ router.get("/dashboard", (req, res) => {
       res.status(500).json(err);
     });
 });
+
+router.get("/addBlog", (req, res) => res.render("addBlogg", {}));
+
 module.exports = router;

@@ -6,6 +6,12 @@ const withAuth = require("../../utils/auth");
 router.get("/", (req, res) => {
   Comment.findAll({
     attributes: ["id", "comment_text", "user_id", "blog_id"],
+    include: [
+      {
+        model: User,
+        attributes: ["username"],
+      },
+    ],
   })
     .then((dbCommentData) => res.json(dbCommentData))
     .catch((err) => {

@@ -1,17 +1,18 @@
-//handlling the add blog button on dashboard, rendering an add-blog.handlebars page when button clicked
+//handlling the add blog button on dashboard, rendering an add-blog.handlebars page when button clicked, then listen on the submit button to add the blog text/ title through the backend
 
-//modify this for your add blog button....
-async function newFormHandler(event) {
+async function addBlogHandler(event) {
   event.preventDefault();
 
-  const title = document.querySelector('input[name="post-title"]').value;
-  const post_url = document.querySelector('input[name="post-url"]').value;
+  const title = document.querySelector('input[name="blog-title"]').value.trim();
+  const blog_text = document
+    .querySelector('textarea[name="blog-text"]')
+    .value.trim();
 
-  const response = await fetch(`/api/posts`, {
+  const response = await fetch("/api/blogs", {
     method: "POST",
     body: JSON.stringify({
       title,
-      post_url,
+      blog_text,
     }),
     headers: {
       "Content-Type": "application/json",
@@ -25,6 +26,14 @@ async function newFormHandler(event) {
   }
 }
 
+async function addBlogHandler(event) {
+  event.preventDefault();
+}
+
+// document
+//   .querySelector(".addBlog-btn")
+//   .addEventListener("click", newFormHandler);
+
 document
-  .querySelector(".new-post-form")
-  .addEventListener("click", newFormHandler);
+  .querySelector(".add-blog-form")
+  .addEventListener("submit", addBlogHandler);
