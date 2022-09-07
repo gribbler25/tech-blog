@@ -26,14 +26,6 @@ async function addBlogHandler(event) {
   }
 }
 
-async function addBlogHandler(event) {
-  event.preventDefault();
-}
-
-// document
-//   .querySelector(".addBlog-btn")
-//   .addEventListener("click", newFormHandler);
-
 document
   .querySelector(".add-blog-form")
   .addEventListener("submit", addBlogHandler);

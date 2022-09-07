@@ -44,8 +44,8 @@ width:fit-content;
     height: 20%;
     background-color: aqua;
   }
-  .addBlog-btn{
-    font-size: medium;
+  .addBlog-btn, .add-btn{
+    font-size: large;
     font-weight: bold;
     width: 20%;
     height: 20%;

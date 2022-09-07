@@ -11,11 +11,15 @@
 
       <div class="meta">
         by {{user.username}} on
-        {{created_at}}
+        {{format_date createdAt}}
         |
-        <a href="/blog/{{id}}">comment here</a>
+       
+      </div>
+      <div>
+        <a href="/blog/{{id}}">View/Write Comments</a>
       </div>
     </article>
   </li>
   {{/each}}
 </ol>
+   

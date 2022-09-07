@@ -6,8 +6,8 @@ const { User, Blog, Comment } = require("../../models");
 // get all blogs
 router.get("/", (req, res) => {
   Blog.findAll({
-    order: [["created_at", "DESC"]],
-    attributes: ["id", "title", "blog_text", "created_at"],
+    order: [["createdAt", "DESC"]],
+    attributes: ["id", "title", "blog_text", "createdAt"],
     include: [
       {
         model: User,
@@ -42,11 +42,11 @@ router.get("/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
-    attributes: ["id", "blog_text", "title", "created_at"],
+    attributes: ["id", "blog_text", "title", "createdAt"],
     include: [
       {
         model: Comment,
-        attributes: ["id", "comment_text", "user_id", "blog_id", "created_at"],
+        attributes: ["id", "comment_text", "user_id", "blog_id", "createdAt"],
         include: {
           model: User,
           attributes: ["username"],

@@ -5,7 +5,7 @@ const { Blog, User, Comment } = require("../models");
 //render all blogs on the homepage
 router.get("/", (req, res) => {
   Blog.findAll({
-    attributes: ["id", "title", "blog_text", "created_at"],
+    attributes: ["id", "title", "blog_text", "createdAt"],
     include: [
       {
         model: User,
@@ -39,17 +39,18 @@ router.get("/signup", (req, res) => {
   res.render("signup");
 });
 
-//render page with one blog incuding comments and option to comment...called on when 'comment here' link is clicked
+//render page with ONE blog incuding title and text that can be edited.
 router.get("/blog/:id", (req, res) => {
+  console.log(req.params);
   Blog.findOne({
     where: {
       id: req.params.id,
     },
-    attributes: ["id", "title", "blog_text", "created_at"],
+    attributes: ["id", "title", "blog_text", "createdAt"],
     include: [
       {
         model: Comment,
-        attributes: ["id", "comment_text", "blog_id", "user_id", "created_at"],
+        attributes: ["id", "comment_text", "blog_id", "user_id", "createdAt"],
         include: {
           model: User,
           attributes: ["username"],
@@ -62,6 +63,7 @@ router.get("/blog/:id", (req, res) => {
     ],
   })
     .then((dbPostData) => {
+      console.log(dbPostData);
       if (!dbPostData) {
         res.status(404).json({ message: "No post found with this id" });
         return;
@@ -84,11 +86,11 @@ router.get("/dashboard", (req, res) => {
     where: {
       user_id: req.session.user_id,
     },
-    attributes: ["id", "title", "blog_text", "created_at"],
+    attributes: ["id", "title", "blog_text", "createdAt"],
     include: [
       {
         model: Comment,
-        attributes: ["id", "comment_text", "blog_id", "user_id", "created_at"],
+        attributes: ["id", "comment_text", "blog_id", "user_id", "createdAt"],
         include: {
           model: User,
           attributes: ["username"],
@@ -109,6 +111,6 @@ router.get("/dashboard", (req, res) => {
     });
 });
 
-router.get("/addBlog", (req, res) => res.render("addBlogg", {}));
+router.get("/addBlog", (req, res) => res.render("addBlog", {}));
 
 module.exports = router;

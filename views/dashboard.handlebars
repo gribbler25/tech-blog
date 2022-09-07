@@ -5,6 +5,7 @@ button to add a blog at bottom. --}}
 {{#if blogs.length}}
 <section>
   <h2>Your Blogs</h2>
+
   <ol class="blog-list">
      {{#each blogs as |blog|}}
   <li>
@@ -16,20 +17,23 @@ button to add a blog at bottom. --}}
       </div>
 
       <div class="meta">
-        {{!-- by {{username}} on --}}
-        {{created_at}}
+     
+        {{format_date createdAt}}
         |
       
       </div>
   {{>comments blog.comments}}
     </article>
+    <button id="delete-btn" type="click" data-id="{{id}}">Delete this blog</button>
+    <button id="update-btn" type="click" data-id="{{id}}">Update this blog</button>
   </li>
   {{/each}}
   </ol>
-
 </section>
 {{/if}}
 
-<button class="addBlog-btn"><a href="/addBlog">&#43; Add Blog</a></button>
+{{!-- <button class="addBlog-btn"> --}}
+  <a href="/addBlog" class="add-btn">&#43; Add Blog</a>
+  {{!-- </button> --}}
 
-<script src="/javascript/addBlog.js"></script>
+<script src="/javascript/delete-blog.js"></script>

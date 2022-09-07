@@ -12,14 +12,14 @@
 
       <div class="meta">
         by {{blog.user.username}} on
-        {{blog.created_at}}
+        {{format_date blog.createdAt}}
         |
       </div>
       <h2>Comments:</h2>
     {{>comments blog.comments}}
 
 {{#if loggedIn}}
-<button class="delete-btn">Delete this blog</button>
+
 
 <form class="comment-form">
   <div>
@@ -36,5 +36,5 @@
 </ol>
 {{#if loggedIn}}
 <script src="/javascript/comment.js"></script>
-<script src="/javascript/delete-blog.js"></script>
+{{!-- <script src="/javascript/delete-blog.js"></script> --}}
 {{/if}}
