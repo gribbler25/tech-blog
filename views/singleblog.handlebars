@@ -1,0 +1,40 @@
+{{!-- //displayed when 'comment here' is clicked on a homepage blog --}}
+
+<ol class="blog-list">
+  <li>
+    <article class="blog">
+      <div class="title-blog">
+        <h2>{{blog.title}}</h2>
+      </div>
+      <div class="blog">
+        {{blog.blog_text}}
+      </div>
+
+      <div class="meta">
+        by {{blog.user.username}} on
+        {{format_date blog.createdAt}}
+        |
+      </div>
+      <h2>Comments:</h2>
+    {{>comments blog.comments}}
+
+{{#if loggedIn}}
+
+
+<form class="comment-form">
+  <div>
+    <h3>New Comment:</h3>
+    <textarea name="comment-buddy" class="comment-buddy"></textarea>
+  </div>
+  
+    <button type="submit">Add Comment</button>
+  
+</form>
+{{/if}}
+    </article>
+  </li>
+</ol>
+{{#if loggedIn}}
+<script src="/javascript/comment.js"></script>
+{{!-- <script src="/javascript/delete-blog.js"></script> --}}
+{{/if}}

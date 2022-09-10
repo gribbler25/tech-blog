@@ -1,0 +1,41 @@
+{{!-- dashboard for same header and all blogs assoc with the logged-in user's id(session.id)incuding comments.
+button to add a blog at bottom. --}}
+
+
+{{#if blogs.length}}
+<section>
+  <h2>Your Blogs</h2>
+
+  <ol class="blog-list">
+     {{#each blogs as |blog|}}
+  <li>
+    
+    <article class="blog">
+      <div class="title-blog">
+        <h2>{{blog.title}}</h2>
+        <p>{{blog.blog_text}}</p>
+      </div>
+
+      <div class="meta">
+     
+        {{format_date createdAt}}
+        |
+      <a id="update-btn" href="api/edit/{{blog.id}}">Update this blog</a>
+      </div>
+  {{>comments blog.comments}}
+    </article>
+    <div class="listened-btn">
+    <button id="delete-btn" type="click" data-id="{{blog.id}}">Delete this blog</button>
+   </div>
+  </li>
+  {{/each}}
+  </ol>
+</section>
+{{/if}}
+
+{{!-- <button class="addBlog-btn"> --}}
+  <a href="/addBlog" class="add-btn">&#43; Add Blog</a>
+  {{!-- </button> --}}
+
+<script src="/javascript/delete-blog.js"></script>
+{{!-- <script src="/javascript/update-blog.js"></script> --}}

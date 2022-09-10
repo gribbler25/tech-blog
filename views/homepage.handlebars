@@ -1,0 +1,25 @@
+<ol class="blog-list">
+ 
+    {{#each blogs as |blog|}}
+  <li>
+    {{!-- {{< blog-info blogs}} --}}
+    <article class="blog">
+      <div class="title-blog">
+        <h2>{{title}}</h2>
+        <p>{{blog_text}}</p>
+      </div>
+
+      <div class="meta">
+        by {{user.username}} on
+        {{format_date createdAt}}
+        |
+       
+      </div>
+      <div>
+        <a href="/blog/{{id}}">View/Write Comments</a>
+      </div>
+    </article>
+  </li>
+  {{/each}}
+</ol>
+   

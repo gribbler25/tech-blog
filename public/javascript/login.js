@@ -1,25 +1,19 @@
-const { post } = require("../../controllers"); //??
-// code from module which to model after?? add html class/id refs..route
-
-async function signupFormHandler(event) {
+async function loginFormHandler(event) {
   event.preventDefault();
 
-  const username = document.querySelector().value.trim();
+  const email = document.querySelector("#email-login").value.trim();
+  const password = document.querySelector("#password-login").value.trim();
 
-  const email = document.querySelector().value.trim();
-
-  const password = document.querySelector().value.trim();
-
-  if (username && email && password) {
-    const response = await fetch("/api/...?", {
-      method: post,
+  if (email && password) {
+    const response = await fetch("/api/users/login", {
+      method: "post",
       body: JSON.stringify({
-        username,
         email,
         password,
       }),
       headers: { "Content-Type": "application/json" },
     });
+    console.log(response, response.ok);
     if (response.ok) {
       document.location.replace("/");
     } else {
@@ -28,4 +22,6 @@ async function signupFormHandler(event) {
   }
 }
 
-document.querySelector("").addEventListener("submit", signupFormHandler);
+document
+  .querySelector(".login-form")
+  .addEventListener("submit", loginFormHandler);
