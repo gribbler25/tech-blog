@@ -12,20 +12,21 @@ button to add a blog at bottom. --}}
     
     <article class="blog">
       <div class="title-blog">
-        <h2>{{title}}</h2>
-        <p>{{blog_text}}</p>
+        <h2>{{blog.title}}</h2>
+        <p>{{blog.blog_text}}</p>
       </div>
 
       <div class="meta">
      
         {{format_date createdAt}}
         |
-      <a id="update-btn" href="/api/edit/{{id}}">Update this blog</a>
+      <a id="update-btn" href="api/edit/{{blog.id}}">Update this blog</a>
       </div>
   {{>comments blog.comments}}
     </article>
-    <button id="delete-btn" type="click" data-id="{{id}}">Delete this blog</button>
-   
+    <div class="listened-btn">
+    <button id="delete-btn" type="click" data-id="{{blog.id}}">Delete this blog</button>
+   </div>
   </li>
   {{/each}}
   </ol>
