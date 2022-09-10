@@ -20,12 +20,12 @@ button to add a blog at bottom. --}}
      
         {{format_date createdAt}}
         |
-      <a id="update-btn" href="/dashboard/edit/{{id}}">Update this blog</a>
+      <a id="update-btn" href="/api/edit/{{id}}">Update this blog</a>
       </div>
   {{>comments blog.comments}}
     </article>
     <button id="delete-btn" type="click" data-id="{{id}}">Delete this blog</button>
-    {{!-- <a id="update-btn" href="/dashboard/edit/{{id}}">Update this blog</a> --}}
+   
   </li>
   {{/each}}
   </ol>

@@ -1,23 +1,3 @@
-// async function editBlogRender(event) {
-//   event.preventDefault();
-//   const button = document.getElementById("update-btn");
-//   const id = button.getAttribute("data-id");
-//   console.log(id);
-//   await fetch(`dashboard/edit/${id}`, {
-//     method: "POST",
-
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//   });
-
-//   if (response.ok) {
-//     console.log("edit blog!");
-//   } else {
-//     alert(response.statusText);
-//   }
-// }
-
 async function updateFormHandler(event) {
   event.preventDefault();
 
@@ -31,10 +11,11 @@ async function updateFormHandler(event) {
   const id = window.location.toString().split("/")[
     window.location.toString().split("/").length - 1
   ];
-  console.log(blog_title, blog_text, id);
+
+  console.log(blog_title, blog_text, id); //this is logging to console
   if (blog_title && blog_text) {
-    await fetch(`/api/blogs/${id}`, {
-      Method: "PUT",
+    const response = await fetch(`api/blogs/${id}`, {
+      method: "PUT",
       body: JSON.stringify({
         title: blog_title,
         blog_text: blog_text,

@@ -35,7 +35,7 @@ router.get("/", (req, res) => {
 
 //render page with ONE blog incuding title and text that can be edited.
 router.get("/edit/:id", (req, res) => {
-  console.log(req.params);
+  console.log("hello!", req.params);
   Blog.findOne({
     where: {
       id: req.params.id,
